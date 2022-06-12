@@ -70,7 +70,7 @@ async def send_weather(message: types.Message):
                                f"<b>{message.date}</b>\n"
                                f"Погода: {city}\n"
                                f"Температура: {current_weather}C°"
-                               f"\n{weather_description}\n "
+                               f"\n{weather_description}\n"
                                f"Влажность: {humidity}%\n"
                                f"Ветер: {wind_speed} м/с\n"
                                # f"Восход солнца: {sunrise_time}\n"
