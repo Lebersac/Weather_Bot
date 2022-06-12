@@ -4,6 +4,9 @@ from utils.const import CODE_TO_EMOJI
 from utils.utils import round_number, timestamp_to_date
 
 
+# Функция делает запрос на сторонний API openweather в зависимости от выбранного города,
+# возвращает запрошенный город в формате JSON
+# На входе принимает нужный город и токен для openweather
 def request_weather( city: str, openweather_token: str ):
     try:
         r = requests.get(
@@ -15,6 +18,9 @@ def request_weather( city: str, openweather_token: str ):
         return ex
 
 
+# Внутри себя вызывает функцию, которая делает запрос на API, получает JSON и преобразует его в нужный формат
+# Возвращает обработанные данные(типа указаны в коде)
+# На входе принимает нужный город и токен для openweather
 def get_weather( city: str, openweather_token: str ) -> (
         str, int, int, int, float, datetime, datetime, str, float):
     try:
@@ -49,12 +55,3 @@ def get_weather( city: str, openweather_token: str ) -> (
                sunset_time, \
                weather_description, \
                humidity
-
-
-def main():
-    city = input('Введите город: ')
-    print(datetime.datetime.now().hour)
-
-
-if __name__ == '__main__':
-    main()

@@ -1,5 +1,7 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
+# Здесь создаем меню для бота
+
 # ---Main menu--- #
 btn_moscow = KeyboardButton('Москва')
 btn_spb = KeyboardButton('Санкт-Петербург')

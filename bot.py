@@ -1,4 +1,3 @@
-import requests
 import datetime
 from aiogram import Bot, types, dispatcher
 from aiogram.dispatcher import Dispatcher
@@ -8,11 +7,16 @@ from main import get_weather
 from utils.utils import timestamp_to_date, get_greeting
 import markup as nav
 
+# Создаем инстанс бота
 bot = Bot(bot_token)
+
+# Создаем инстанс диспатчера
 dp = Dispatcher(bot)
 
 
+# Обрабатываем команды /start и /help
 @dp.message_handler(commands=[ 'start', 'help' ])
+# На указанные выше команды здоровается с пользователем и отображает меню бота
 async def start_command( message: types.Message ):
     await bot.send_message(
         message.from_user.id,
@@ -20,8 +24,9 @@ async def start_command( message: types.Message ):
         reply_markup=nav.main_menu
     )
 
-
+# Обрабатываем сообщение 'Спасибо!'
 @dp.message_handler(lambda message: message.text and 'Спасибо!' in message.text)
+# Отвечаем на указанную выше команду и отображаем еще одно меню
 async def send_goodbye( message: types.Message ):
     await bot.send_message(
         message.from_user.id,
@@ -30,7 +35,9 @@ async def send_goodbye( message: types.Message ):
     )
 
 
+# Обрабатываем сообщение 'Еще раз'
 @dp.message_handler(lambda message: message.text and 'Еще раз' in message.text)
+# Отвечаем на указанную выше команду и отображаем главное меню(запускаем бота с начала)
 async def send_again( message: types.Message ):
     await bot.send_message(
         message.from_user.id,
@@ -38,7 +45,9 @@ async def send_again( message: types.Message ):
         reply_markup=nav.main_menu
     )
 
-
+# Обрабатываем все остальные сообщения, включая города
+# Если выбранный пользователем город есть в базе openweather, отправляем погоду
+# для этого города, если нет, то сообщаем юзеру об этом
 @dp.message_handler()
 async def send_weather( message: types.Message ):
     try:
@@ -55,7 +64,6 @@ async def send_weather( message: types.Message ):
                                )
 
     except Exception as ex:
-        print(ex)
         await message.reply('Я не знаю такого города')
 
 
