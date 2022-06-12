@@ -67,14 +67,14 @@ async def send_weather(message: types.Message):
                 message.text, openweather_token)
 
         await bot.send_message(message.from_user.id,
-                               f"<b>{datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}</b>\n"
+                               f"<b>{message.date}</b>\n"
                                f"Погода: {city}\n"
                                f"Температура: {current_weather}C°"
                                f"\n{weather_description}\n "
                                f"Влажность: {humidity}%\n"
                                f"Ветер: {wind_speed} м/с\n"
-                               f"Восход солнца: {sunrise_time}\n"
-                               f"Закат солнца: {sunset_time}\n"
+                               # f"Восход солнца: {sunrise_time}\n"
+                               # f"Закат солнца: {sunset_time}\n"
                                f"<b>{get_greeting(datetime.datetime.now().hour)}</b>",
                                reply_markup=nav.final_menu,
                                parse_mode="HTML"
