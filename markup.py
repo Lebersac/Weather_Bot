@@ -10,9 +10,11 @@ btn_london = KeyboardButton('Лондон')
 btn_dubai = KeyboardButton('Дубай')
 btn_ny = KeyboardButton('Нью-Йорк')
 
-main_menu = ReplyKeyboardMarkup(resize_keyboard=True).add(btn_moscow, btn_spb,
+main_menu = ReplyKeyboardMarkup(resize_keyboard=True).add(btn_moscow,
+                                                          btn_spb,
                                                           btn_berlin,
-                                                          btn_london, btn_dubai,
+                                                          btn_london,
+                                                          btn_dubai,
                                                           btn_ny)
 
 # ---Final menu--- #
