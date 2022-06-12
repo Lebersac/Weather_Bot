@@ -10,7 +10,7 @@ from utils.utils import round_number, timestamp_to_date
 def request_weather(city: str, openweather_token: str):
     try:
         r = requests.get(
-            f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={openweather_token}&units=metric '
+            f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={openweather_token}&units=metric'
         )
         return r.json()
 
