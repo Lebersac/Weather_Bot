@@ -67,8 +67,7 @@ async def send_weather(message: types.Message):
                 message.text, openweather_token)
 
         await bot.send_message(message.from_user.id,
-                               f"<b>{message.date}</b>\n"
-                               f"Погода: {city}\n"
+                               f"<b>{city}</b>\n"
                                f"Температура: {current_weather}C°"
                                f"\n{weather_description}\n"
                                f"Влажность: {humidity}%\n"
